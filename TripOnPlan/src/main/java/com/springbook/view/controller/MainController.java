@@ -19,8 +19,6 @@ public class MainController {
 	
 	@RequestMapping("/main.do")
 	public String mainList(Model model) {
-		model.addAttribute("roomList" , RoomService.mainRoomList());
-		model.addAttribute("plannerList", PlannerService.mainPlannerList());
 		return "WEB-INF/views/main.jsp";
 	}
 	
