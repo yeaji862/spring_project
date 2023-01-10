@@ -86,49 +86,23 @@ public class UserController {
 			System.out.println("kakao_login" + vo);
 			String user_id = vo.getUser_id();
 			String user_name = vo.getUser_name();
+			String user_type = vo.getUser_type();
 			if (userService.login(vo) == null) {
 				System.out.println("카카오회원추가");
 				userService.insert(vo);
 				session.setAttribute("user_id", user_id);
 				session.setAttribute("user_name", user_name);
+				session.setAttribute("user_type", user_type);
 				return "redirect:index.jsp";
-			} else if (vo.getUser_status().equals("0")) {
-				System.out.println("탈퇴회원");
-				return "redirect:index.jsp";
-			} else {
+			}else {
 				session.setAttribute("user_id", user_id);
 				session.setAttribute("user_name", user_name);
+				session.setAttribute("user_type", user_type);
 				System.out.println("카카오로그인");
 				return "redirect:index.jsp";
 			}
 
 		}
-		// 네이버로그인
-		@RequestMapping("/naver_login.do")
-		public String naver_login(UserVO vo, HttpSession session, HttpServletResponse response) {
-			vo.setUser_type("naver");
-			System.out.println("네이버로그인" + vo);
-			String user_id = vo.getUser_id();
-			String user_name = vo.getUser_name();
-			if (userService.login(vo) == null) {
-				System.out.println("네이버회원추가");
-				userService.insert(vo);
-				session.setAttribute("user_id", user_id);
-				session.setAttribute("user_name", user_name);
-				return "redirect:index.jsp";
-			} else if (vo.getUser_status().equals("0")) {
-				System.out.println("탈퇴회원");
-				return "redirect:index.jsp";
-			} else {
-				System.out.println("네이버로그인");
-				session.setAttribute("user_id", user_id);
-				session.setAttribute("user_name", user_name);
-				return "redirect:index.jsp";
-			}
-		}
-
-
-	
 
 	
 
@@ -182,6 +156,13 @@ public class UserController {
 	//내 정보 갈때 비밀번호 치기
 		@RequestMapping("/myinfogo.do")
 		public String myinfogo(UserVO vo, HttpSession session, HttpServletResponse response) throws IOException {
+			
+			if(session.getAttribute("user_type") != null) {
+				if(session.getAttribute("user_type").equals("kakao")) {
+					return "user_info.do";
+				}
+			}
+			
 			vo.setUser_id((String) session.getAttribute("user_id"));
 			String pw =vo.getUser_password();
 			boolean pwCheck;
@@ -235,16 +216,18 @@ public class UserController {
 
 	// 회원추가
 		@RequestMapping("/user_insertform.do")
-		public String user_insert(UserVO vo, HttpServletResponse response) {
+		public String user_insert(UserVO vo, HttpServletResponse response , HttpSession session) {
 			String pw = BCrypt.hashpw(vo.getUser_password(), BCrypt.gensalt());
 			System.out.println("isnsertuser" + pw);
 			vo.setUser_type("own");
 			vo.setUser_password(pw);
 			int insert = userService.insert(vo);
 			if (insert == 0) {
-				return "redirect:index.jsp";
+				session.invalidate();
+				return "WEB-INF/views/user_login.jsp";
 			} else {
-				return "redirect:index.jsp";
+				session.invalidate();
+				return "WEB-INF/views/user_login.jsp";
 			}
 
 		}

@@ -14,6 +14,15 @@
 <div class="check-div1">내 정보 수정</div>
 <hr class="check-hr">
 
+<% if(session.getAttribute("user_type") != null){ 
+	if(session.getAttribute("user_type").equals("kakao")){
+%>
+	<script type="text/javascript">
+
+location.href="myinfogo.do";
+
+</script>
+<%}}else{%>
 <div class="check-pw-div" style="font-size:20px;">비밀번호를 입력해 주세요.</div>
 <br>
 <form class="check-form" action ="myinfogo.do" method="post">
@@ -22,6 +31,8 @@
 </form>
 </div>
 <br><br>
+<% } %>
+
 </div>
 <%@ include file="../footer.jsp"%>
 </body>

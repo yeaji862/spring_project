@@ -9,11 +9,8 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script
-	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
-	charset="utf-8"></script>
 <script>
-	Kakao.init('fb1c12c845e4f94116af70e4a7e21136'); //발급받은 키 중 javascript키를 사용해준다.
+	Kakao.init('b96ec8a7c96b4f5663ea3d19a4bbc885'); //발급받은 키 중 javascript키를 사용해준다.
 	// console.log(Kakao.isInitialized()); // sdk초기화여부판단
 	//카카오로그인
 	function kakaoLogin() {
@@ -73,20 +70,21 @@
 .user_loginbutton {
 	margin: auto 0;
 	color: white;
-	border-radius: 7px;
+	border-radius: 20px;
 	background-color: #ff8e15;
 	border: none;
-	width: 90px;
-	height: 35px;
+	width: 300px;
+	height: 40px;
+	margin: 5px;
 }
 
 #user_id, #user_password {
 	width: 300px;
 	padding: 15px;
-	margin: 10px;
+	margin: 5px;
 	border-radius: 20px;
 	height: 40px;
-	border:1px solid black;
+	border:1px solid #9c9c9c;
 }
 
 
@@ -95,19 +93,22 @@
 	text-align: center;
 	margin-top: 150px;
 }
-/* 카카오이미지둥글게 */
-.kakao_img {
-	border-radius: 150px;
-}
+
 /* 이미지크기 */
 img {
-	width: 40px;
+	width: 180px;
+	cursor: pointer;
 }
 /* a태그 밑줄 */
-a.find {
+a.find , span.find{
 	text-decoration: none;
-	color: black;
+	color: #9d9c9c;
 }
+
+a:hover{
+color: #545454;
+}
+
 </style>
 </head>
 <body>
@@ -127,81 +128,16 @@ a.find {
 			<button class="user_loginbutton">로그인</button>
 		</form>
 		<br>
-		<br> <a class="find" href="user_find.do">아이디 찾기</a>&nbsp;|&nbsp; <a
-			class="find" href="user_pwfind.do">비밀번호 찾기</a>&nbsp;|&nbsp; <a
-			class="find" href="step1.do">회원가입</a><br>
-		<br> <span> <img src="resources/img/kakao_icon.png"
-			onclick="kakaoLogin()" class="kakao_img">&nbsp;&nbsp; <a
-			id="naverIdLogin_loginButton" href="javascript:void(0)"><img
-				src="resources/img/naver_icon.png" class="naver_img"></a><br>
-			<small>카카오</small>&nbsp;&nbsp; <small>네이버</small>
+		<span class="find">
+		<a class="find" href="user_find.do" id="1">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+			class="find" href="user_pwfind.do">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+			class="find" href="step1.do">회원가입</a></span><br><br>
+		<br> <span> <img src="resources/img/kakao_account_login_btn_medium_narrow_ov.png"
+			onclick="kakaoLogin()" class="kakao_img"><br>
+			
 		</span>
 
 		<!-- 	<img src="../resources/img/kakao_icon.png"> 나중경로-->
-		<script
-			src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
-			charset="utf-8"></script>
-
-		<script>
-			var hostIndex = location.href.indexOf(location.host)
-					+ location.host.length;
-			var contextPath = location.href.substring(hostIndex, location.href
-					.indexOf('/', hostIndex + 1));
-
-			var naverLogin = new naver.LoginWithNaverId({
-				clientId : "k1TZnT_MhISa1RyzPuW8", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-				callbackUrl : "http://triponplan.ga/" + contextPath
-						+ "/collback.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
-				isPopup : false,
-				callbackHandle : true
-			});
-
-			naverLogin.init();
-
-			window.addEventListener('load', function() {
-				naverLogin.getLoginStatus(function(status) {
-					if (status) {
-						console.log(naverLogin.user);
-						var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
-						var name = naverLogin.user.getName();
-
-						console.log(naverLogin.user);
-
-						if (email == undefined || email == null) {
-							alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-							naverLogin.reprompt();
-							return;
-						}
-						if (name == undefined || name == null) {
-							alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-							naverLogin.reprompt();
-							return;
-						}
-					} else {
-						console.log("callback 처리에 실패하였습니다.");
-					}
-				});
-			});
-
-			var testPopUp;
-			function openPopUp() {
-				testPopUp = window
-						.open("https://nid.naver.com/nidlogin.logout",
-								"_blank",
-								"toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
-			}
-			function closePopUp() {
-				testPopUp.close();
-			}
-
-			function naverLogout() {
-				openPopUp();
-				setTimeout(function() {
-					closePopUp();
-				}, 1000);
-
-			}
-		</script>
 
 	</div>
 </body>

@@ -94,7 +94,7 @@ public class UserVO {
 		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
 				+ ", user_birth=" + user_birth + ", user_gender=" + user_gender + ", user_email=" + user_email
 				+ ", user_phone=" + user_phone + ", user_address1=" + user_address1 + ", user_address2=" + user_address2
-				+ ", user_status=" + user_status +"user_type="+user_type+"find= "+find+ "]";
+				+ ", user_status=" + user_status +", user_type="+user_type+"find= "+find+ "]";
 	}
 
 }

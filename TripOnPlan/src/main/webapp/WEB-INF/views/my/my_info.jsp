@@ -6,6 +6,25 @@
 
 <title>정보수정</title>
 </head>
+<style>
+.kakao{
+text-align-last: center;
+font-size: 20px;
+}
+.join{
+    text-align: end;
+    font-size: 17px;
+    color : #ffa544;
+    margin: 5%;
+    font-weight: 600;
+    cursor: pointer;
+}
+.join:hover{
+    color: #f27d00;
+    text-decoration: none;
+}
+}
+</style>
 <body class="info-body d-flex flex-column min-vh-100">
 <div class="footer-div">
 	<script>
@@ -389,7 +408,32 @@
 <div class="myinfo-div1">내 정보 수정</div>
 <hr class="myinfo-hr">
 <br><br>
+<% if(session.getAttribute("user_type") != null){ 
+	if(session.getAttribute("user_type").equals("kakao")){
+%>
+<p class="kakao">카카오 소셜 로그인 회원 입니다</p><br>
+	<table class="myinfo-table">
+	<tr>
+	<th id="myinfo-th">아이디</th><td id="myinfo-td"><input type="text"
+							class="form-control" name="user_id" id="id" value="${user_id}"
+							readonly></td>
+	</tr>
+	<tr></tr>
+	<tr>
+	<th id="myinfo-th">이름</th><td id="myinfo-td"><input type="text"
+							class="form-control" id="name" name="user_name"
+							value="${user_name}" readonly></td>
+	</tr>
 
+
+	<tr>
+	<th id="myinfo-th">이메일</th><td id="myinfo-td"><input type="email" class="form-control" id="email" name="user_email" required value="${user_email}" readOnly>
+						
+	</tr>
+	</table>
+	
+	<div class="join"><a class="join" href="step1.do?type=logout">  >> TripOnPlan에서 회원가입 하러가기</a></div>
+<%} }else {%>
 <div class="container">
 <form class="validation-form" action="user_update.do" method="post"
 					name="joinform">
@@ -465,6 +509,7 @@
 						onclick="deletecheck()">탈퇴 하기</button>
 	</form>
 	</div>
+	<% } %>
 	</div>
 	</div>
 	<%@ include file="../footer.jsp"%>
