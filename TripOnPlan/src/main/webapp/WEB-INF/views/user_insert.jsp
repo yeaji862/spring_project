@@ -36,11 +36,10 @@ var emailRegex1=false;//이메일형식
 $(function() {
     $('#user_id').focusout(function() {
                    if (idReg.test($('#user_id').val()) == false)  {
-                      $("#checkid").html('형식을 일치시켜주세요');
-                      $("#checkid").attr('color', 'red');
+                      $("#checkid").css('display' , '');
                       idReg1=false;
                    } else{
-                      $("#checkid").html('');
+                	   $("#checkid").css('display' , 'none');
                       idReg1=true;
 
                    }
@@ -51,11 +50,10 @@ $(function() {
 $(function() {
     $('#user_password').focusout(function() {
                    if (pwReg.test($('#user_password').val()) == false)  {
-                      $("#checkpw").html('형식을 일치시켜주세요');
-                      $("#checkpw").attr('color', 'red');
+                      $("#checkpw").css('display' , '');
                       pwReg1=false;
                    } else{
-                      $("#checkpw").html('');
+                	   $("#checkpw").css('display' , 'none');
                       pwReg1=true;
 
                    }
@@ -130,6 +128,9 @@ $(function() {
    //    아이디 중복체크
    $(function() {
       $('#idCheck').click(function() {
+    	 
+    	
+    	 
          if($('#user_id').val()!=''){
             
          $.ajax({
@@ -142,10 +143,10 @@ $(function() {
             success : function(result) {
                console.log(result);
                if (result == 0) {
-                  alert("아이디사용가능");
+                  alert("사용가능한 아이디 입니다");
                   idCheck = true;
                } else if (result == 1) {
-                  alert("아이디존재");
+                  alert("존재하는 아이디 입니다");
                } else {
                   alert("그외");
                }
@@ -188,16 +189,22 @@ input {
     border: 1px solid #aaa;
     padding: 12px;
     margin-top: 10px;
+    width: 350px;
     }
     
     #phoneChk, button {
-    margin: 15px 5px;
+   margin-left : 5px;
    color: white;
    border-radius: 7px;
    background-color: #ff8e15;
    border: none;
-   width: 130px;
-   height: 35px;
+   width: 150px;
+   height: 40px;
+    }
+    
+    th{
+    font-weight: inherit;
+    color: #4e4e4e;
     }
 
 </style>
@@ -205,25 +212,26 @@ input {
 <body class="d-flex flex-column min-vh-100">
 <br>
 <div class="container">
-<div class="userinsert-div1">회원가입</div>
+<div class="userinsert-div1"><h2>회원가입</h2></div>
 <hr class="userinsert-hr">
 
 
 <form action="user_insertform.do" method="post" id="user_insert">
 <table class="userinsert-table container">
 <tr>
-<th class="userinsert-th">아이디</th><td><input class="userinsert-input" type="text" name="user_id" id="user_id" placeholder='ID는 6~11자, 영문자로 시작, 영문자와 숫자만 가능합니다.'>
-   <font id="checkid" size="2"></font>
-   <button type="button" id="idCheck" class="userinsert-idbtn">아이디중복체크</button></td>
+<th class="userinsert-th">아이디</th><td><input class="userinsert-input" type="text" name="user_id" id="user_id" placeholder='6~11자,영문자로 시작,영문자와 숫자만 가능합니다'>
+   <!-- <font id="checkid" size="2"></font> --><button type="button" id="idCheck" class="userinsert-idbtn">아이디중복체크</button>
+   <small style="color:red; display: none;" id="checkid"><br> 6~11자,영문자로 시작,영문자와 숫자만 가능합니다</small></td>
 </tr>
 <tr>
 <th class="userinsert-th">비밀번호</th><td> <input class="userinsert-input" type="password" name="user_password"
       id="user_password" placeholder='영어 대소문자 특수문자 숫자 포함 8에서 16글자만 가능합니다'>
-      <font id="checkpw" size="2"></font></td>
+      <!-- <font id="checkpw" size="2"></font> -->
+      <small style="color:red; display: none;" id="checkpw"><br>영어 대소문자 특수문자 숫자 포함 8에서 16글자만 가능합니다</small></td>
 </tr>
 <tr>
-<th class="userinsert-th">비밀번호재확인</th><td><input class="userinsert-input" type="password" name="user_passwordCheck"
-      id="user_passwordCheck" placeholder='비밀번호재확인'></td>
+<th class="userinsert-th">비밀번호 재확인</th><td><input class="userinsert-input" type="password" name="user_passwordCheck"
+      id="user_passwordCheck" placeholder='비밀번호 재확인'></td>
 </tr>
 <tr>
 <th class="userinsert-th">이름</th><td><input class="userinsert-input" type="text" name="user_name" placeholder='이름'></td>
@@ -238,15 +246,16 @@ input {
 </td>
 </tr>
 <tr>
-<th></th><td><input   id="phone2" type="text" name="phone2" title="인증번호 입력" disabled /><button type="button" id="phoneChk2" class="doubleChk userinsert-input">인증확인</button><br><span class="point successPhoneChk" style="font-size: 12px; color:green;">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span> <input
+<th></th><td><input   id="phone2" type="text" name="phone2" title="인증번호 입력" disabled /> <button type="button" id="phoneChk2" class="doubleChk userinsert-input">인증확인</button><br><span class="point successPhoneChk" style="font-size: 12px; color:green;">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span> <input
       type="hidden" id="phoneDoubleChk" /> </td>
 </tr>   
 <tr>
 <th class="userinsert-th">이메일</th><td><input class="userinsert-input" type="text" name="user_email" id="user_email" placeholder='예) 1018@triponplan.com'></td>
 </tr>
    <tr>
-   <th></th><td><button type="button" class="submitbutton userinsert-insertbtn" onclick="check()">회원가입</button>
-   <button type="reset" class="submitbutton userinsert-resetbtn">되돌리기</button></td>
+   <th></th><td>
+   <button type="button" class="submitbutton userinsert-insertbtn" onclick="check()" style="margin-top:20px;margin-bottom:20px">회원가입</button>
+  </td>
    
    </tr>
    </table>

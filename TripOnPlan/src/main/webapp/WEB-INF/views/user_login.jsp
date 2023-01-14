@@ -131,7 +131,7 @@ color: #545454;
 		<span class="find">
 		<a class="find" href="user_find.do" id="1">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
 			class="find" href="user_pwfind.do">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-			class="find" href="step1.do">회원가입</a></span><br><br>
+			class="find" href="user_insert.do">회원가입</a></span><br><br>
 		<br> <span> <img src="resources/img/kakao_account_login_btn_medium_narrow_ov.png"
 			onclick="kakaoLogin()" class="kakao_img"><br>
 			

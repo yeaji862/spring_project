@@ -27,11 +27,11 @@
 	<form role="form" action="user_insert.do" method="post">
 	  <div class="card w-100 p-5 mt-3 justify-content-lg-center align-items-lg-center">
 		<div class="form-group">
-		  <div class="card-header">회원가입 약관</div>
+		  <div class="card-header"><h3>회원가입 약관</h3></div>
 			<div class="card-body">
 			  <div class="col-lg-12">
 				<div class="card w-100 p-5">
-				  <h4 class="card-title">전자상거래 표준약관</h4>
+				  <h5 class="card-title">전자상거래 표준약관</h5>
 				<p class="card-text">
 					제1조(목적) 본 회원약관은 OOOO-업체명(이하 '갑'라 한다)이 운영하는 인터넷관련 서비스(이하 '서비스'라
 					한다)를 이용함에 있어 관리자와 이용자(이하 '회원'라 한다)의 권리, 의무 및 책임사항을 규정함을 목적으로
@@ -51,7 +51,7 @@
 				 </div>
 			    </div>
 				  <label class="checkbox-inline">   
-					<input type="checkbox" name="agree1" value="true" required="required">동의합니다.
+					<input type="checkbox" name="agree1" value="true" required="required"> 동의합니다.
 				  </label>    
 		      </div>
 			<div class="card-body">
@@ -76,11 +76,11 @@
 					</div>
 				</div>
 						<label class="checkbox-inline">   
-							<input type="checkbox" name="agree2" value="true" required="required">동의합니다.
+							<input type="checkbox" name="agree2" value="true" required="required"> 동의합니다.
 						</label>  
 			</div>
 				<label class="checkbox-inline">   
-							<input type="checkbox" name="agreeAll" id="agreeAll" value="true" required="required">전체 동의합니다.
+							<input type="checkbox" name="agreeAll" id="agreeAll" value="true" required="required"> 전체 동의합니다.
 						</label>  
 		  </div>
 			<button type="submit" class="btn btn-default">회원가입 단계로 넘어가기</button>

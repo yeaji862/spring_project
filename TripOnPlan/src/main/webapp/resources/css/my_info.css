@@ -34,7 +34,7 @@ form.info-form {
 	width: 80%;
 	margin: 0 auto;
 }
-
+/* 
 input#sample6_detailAddress, input#phone, input#email {
 	border: solid 1px #aaa;
 	height: 40px;
@@ -43,7 +43,7 @@ input#sample6_detailAddress, input#phone, input#email {
 	padding: 12px;
 	display: inline;
 	margin-bottom: 10px;
-}
+} */
 
 input.adbtn, #phone-c, #email-c, #phoneChk, #sendMail, #verifyEmailConfirm {
 	border-radius: 15px;
@@ -97,7 +97,7 @@ button#cbtn:hover {
 	border: 1px solid #222;
 }
 
-#emailCheck, input#phone2 {
+#emailCheck{ /* input#phone2 */
     border-radius: 15px;
     width: 45%;
     height: 35px;

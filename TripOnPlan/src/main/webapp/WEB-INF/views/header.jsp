@@ -4,6 +4,7 @@
 <%
 String user_id = session.getAttribute("user_id") != null ? session.getAttribute("user_id").toString() : "";
 %>
+<link rel="shortcut icon" type="image/x-icon" href="resources/img/DEB94360-C5CD-4BA5-A1AF-C640F3712BE8_1_201_a-2.ico" />
 <!DOCTYPE html>
 <head>
 <title>tripONplan</title>

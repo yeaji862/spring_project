@@ -47,20 +47,21 @@ button#phoneChk2.doubleChk.userinsert-input {
     color: #555;
     border: 1px solid #555;
     border-radius: 7px;
-    width: 100px;
+    width: 150px;
     height: 40px;
     font-weight: bold;
     margin-left: 5px;
 }
 button.submitbutton.userinsert-insertbtn, button.submitbutton.userinsert-resetbtn {
-	    background-color: white;
+	background-color: white;
     color: #555;
     border: 1px solid #555;
     border-radius: 7px;
-    width: 100px;
-    height: 40px;
     font-weight: bold;
     margin-left: 5px;
+    width: 150px;
+    height: 40px;
+}
 }
 
 button.submitbutton.userinsert-insertbtn:hover, button.submitbutton.userinsert-resetbtn:hover {
