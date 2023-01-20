@@ -1,4 +1,4 @@
-# TripOnPlan
+# TripOnPlan <img src="img/0.png" style="width:70px; heigh:40px;">
 
 작업기간 : 2022-10-21 ~ 2022-11-18 
 
