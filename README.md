@@ -51,11 +51,11 @@
 
 <img src="img/4.png">
 
-1. 지역 선택 
+2. 지역 선택 
 
 <img src="img/5.png">
 
-1. 인원수 선택 
+3. 인원수 선택 
 
 <img src="img/6.png">
 
