@@ -30,7 +30,8 @@ background-color : #f0f0f0;
 	overflow: hidden;
 	border: solid 1px  #e1e1e1;
 	border-radius: 15px;
-	box-shadow: 2px 1.5px 2px 2px #f2f2f2
+	box-shadow: 2px 1.5px 2px 2px #f2f2f2;
+	cursor: pointer;
 }
 
 .listImg{

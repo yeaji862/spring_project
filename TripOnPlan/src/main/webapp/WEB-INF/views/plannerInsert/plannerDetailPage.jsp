@@ -138,7 +138,7 @@ function like(num){ // num = like (좋아요 누름)  num = unlike (좋아요 �
 				$('.like').css('display', '');
 				$('.unlike').css('display', 'none');
 				$('#status').attr('value' , 'unlike');
-			}
+			}ㄹ
 		},
 		error : function(){
 			alert("실패");
@@ -157,7 +157,7 @@ function like(num){ // num = like (좋아요 누름)  num = unlike (좋아요 �
 		data:{"num" : num , "id" : id } ,
 		success:function(data){
 			$(data).each(function(){
-				$("#reply" + this.comment_no).append("<br><span class='userID'>"+this.user_id+"</span><small class='reg"+this.reply_no+" date'>"+this.reg_date+"</small>");
+				$("#reply" + this.comment_no).append("<br><span class='userID'>"+this.user_id+"&nbsp;</span><small class='reg"+this.reply_no+" date'>"+this.reg_date+"</small>");
 				if("${userID}" == this.user_id){
 					$("#reply" + this.comment_no).append("<button type='button' class='btn btn-light btn-sm REtest"+this.reply_no+"' onclick='REupdate("+this.reply_no+" , "+this.comment_no+")'>수정</button><button type='button' class='btn btn-light btn-sm REtest"+this.reply_no+"' onclick='REdeletes("+this.reply_no+")'>삭제</button>");
 				}
@@ -281,6 +281,7 @@ function REdeletes(val){
 	});
 }
 function reply(val){
+	
 	$('.reply' + val).css("display" , "")
 	$('.button' + val).css("display" , "")
 }
@@ -468,9 +469,11 @@ location_on
 
 <c:forEach items="${comment}" var="c" varStatus="status">
 <div id="update${c.comment_no}">
-<span class="userID">${c.user_id}</span><small class="reg${c.comment_no} date">${c.reg_date}</small>
+<span class="userID">${c.user_id}&nbsp;</span><small class="reg${c.comment_no} date">${c.reg_date}</small>
 <c:set var="userID" value="${userID}" />
-<button type="button" class="btn btn-light btn-sm test${c.comment_no}" onclick="reply(${c.comment_no})">답글</button>
+<% if((String)session.getAttribute("user_id") != null){ %>
+	<button type="button" class="btn btn-light btn-sm test${c.comment_no}" onclick="reply(${c.comment_no})">답글</button>
+	<% } %>
 <c:if test="${c.user_id eq userID}">
 <button type="button" class="btn btn-light btn-sm test${c.comment_no}" onclick="update(${c.comment_no})">수정</button> 
 <button type="button" class="btn btn-light btn-sm test${c.comment_no}" onclick="deletes(${c.comment_no})">삭제</button>
