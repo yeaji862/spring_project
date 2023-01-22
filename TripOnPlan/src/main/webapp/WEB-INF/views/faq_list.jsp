@@ -122,6 +122,7 @@ function selTr(val){
 </script>
 
 <body>
+<div style="margin-left:10%; margin-right:10%">
 	<div class="jumbotron faql-div1">
 		<h1>공지 사항</h1>
 	</div>
@@ -188,6 +189,7 @@ function selTr(val){
 			</div>
 			<br> <br>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

@@ -23,6 +23,17 @@ font-size: 20px;
     color: #f27d00;
     text-decoration: none;
 }
+.checked{
+border-radius: 15px;
+    height: 40px;
+    border: 1px solid #aaa;
+    padding: 12px;
+    width: 70%;
+    margin-bottom: 10px;
+}
+.checked:disabled, .checked[readonly] {
+    background-color: #e9ecef;
+    /* opacity: 1; */
 }
 </style>
 <body class="info-body d-flex flex-column min-vh-100">
@@ -57,7 +68,7 @@ font-size: 20px;
 		var phone_pattern = /^010-?([0-9]{4})-?([0-9]{4})$/;
 		var birth_pattern = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 		//    var email_pattern = /^[a-z0-9.\-_]+@([a-z0-9-]+\.)+[a-z]{2,6}$/;	 
-		var email_pattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+		var email_pattern = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 
 		// 	 우편번호 찾기  
 		function sample6_execDaumPostcode() {
@@ -314,7 +325,7 @@ font-size: 20px;
 
 			//이메일 인증
 			$(function() {
-				var emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+				var emailRegex = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 				var email = $("#email");
 				
 				
@@ -449,33 +460,17 @@ font-size: 20px;
 							class="form-control" id="name" name="user_name"
 							value="${user_name}" required></td>
 	</tr>
-	<tr>
-	<th id="myinfo-th">주소</th><td id="myinfo-td"> <input type="text"	id="sample6_postcode" name="postcode" placeholder="우편번호"
-							value="${aarr[0]}" style="display: none">
-							<input type="text" id="sample6_address" placeholder="주소"
-							name="user_address1" value="${user_address1}">
-							
-							<input type="text" id="sample6_extraAddress" placeholder="참고항목"
-							style="display: none">
-							</td>
-	</tr>
-	<tr>
-	<th id="myinfo-thnone"></th><td><input type="text" id="sample6_detailAddress" placeholder="상세주소"
-							name="user_address2" value="${user_address2}">
-							<input type="button" class="adbtn" onclick="sample6_execDaumPostcode()" value="주소 찾기">
-							</td>
-	</tr>
 	
 	<tr>
 	<th id="myinfo-th">연락처</th><td id="myinfo-td"><input type="text"
-							class="form-control info-phone" name="user_phone" id="phone"
-							value="${user_phone}" readonly>
-							<input id="phone-c"
-							type="button" onclick="phonec()" value="번호 변경하기"><input
-							id="phoneChk" type="button" style="display: none" value="인증하기">
+							class=" info-phone checked" name="user_phone" id="phone"
+							value="${user_phone}" readonly style="display: inline;">
+			
+							<input id="phone-c" type="button" onclick="phonec()" value="번호 변경하기">
+							<input id="phoneChk" type="button" style="display: none" value="인증하기">
 						<font id="checkphone" size="2"></font>
 						<div id="config1" style="display: none">
-							<input id="phone2" type="text" name="phone2" title="인증번호 입력">
+							<input id="phone2" type="text" name="phone2" title="인증번호 입력" class="checked">
 							<input id="phoneChk2" class="doubleChk" type="button"
 								value="인증확인"> <span class="point successPhoneChk"></span></div>
 							</td>
@@ -486,18 +481,14 @@ font-size: 20px;
 							class="form-control" id="birth" name="user_birth"
 							value="${user_birth}"> <font id="checkbirth" size="2"></font></td>
 	</tr>
+
 	<tr>
-	<th id="myinfo-th">성별</th><td id="myinfo-td"><input type="text"
-							class="form-control" id="gender" name="user_gender"
-							value="${user_gender}"> </td>
-	</tr>
-	<tr>
-	<th id="myinfo-th">이메일</th><td id="myinfo-td"><input type="email" class="form-control" id="email" name="user_email" required value="${user_email}" readOnly>
+	<th id="myinfo-th">이메일</th><td id="myinfo-td"><input type="email" class="checked" id="email" name="user_email" required value="${user_email}" readOnly >
 						<input id="email-c" type="button" onclick="emailc()" value="메일 변경하기">
 						<input id="sendMail" type="button" style="display: none" value="인증하기">
 						<br><font id="checkemail" size="2"></font>
 						<div id="config" style="display: none">
-							<input id="emailCheck" type="text" name="emailCheck" title="인증번호 입력">
+							<input id="emailCheck" type="text" name="emailCheck" title="인증번호 입력" class="checked">
 							<button id="verifyEmailConfirm" type="button" onclick="emailC()">인증확인</button>
 							<span class="point successEmailChk"></span>
 						</div></td>

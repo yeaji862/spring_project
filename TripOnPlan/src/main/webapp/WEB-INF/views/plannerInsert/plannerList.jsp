@@ -154,6 +154,7 @@ style="display:none"
 </form>
 </div>
 </c:forEach>
+
 <div style="text-align-last: center; margin-top:5%; margin-bottom:3%; display:none" id="spinner">
 <div class="spinner-border" role="status">
   <span class="visually-hidden">Loading...</span>

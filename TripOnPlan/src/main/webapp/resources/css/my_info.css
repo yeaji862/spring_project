@@ -45,7 +45,7 @@ input#sample6_detailAddress, input#phone, input#email {
 	margin-bottom: 10px;
 } */
 
-input.adbtn, #phone-c, #email-c, #phoneChk, #sendMail, #verifyEmailConfirm {
+input.adbtn, #phone-c, #email-c, #phoneChk, #sendMail, #verifyEmailConfirm , #phoneChk2 {
 	border-radius: 15px;
 	width: 29%;
 	height: 40px;
