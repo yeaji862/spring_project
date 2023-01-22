@@ -404,7 +404,7 @@ function test00(tval) {
 				}
 				
  				if(this.firstimage == ""){
- 					img = "./resources/img/map.png";
+ 					img = "resources/img/map.png";
  				}else{
  				 	img = this.firstimage
  				}

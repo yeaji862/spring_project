@@ -15,9 +15,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <style>
-.main{
-margin-bottom: 3%;
-}
 .day{
 border: solid 1px #e0dfde;
 border-radius: 8px;
@@ -83,10 +80,11 @@ outline: none;
     overflow: overlay;
 }
 .main{
-	border-top:solid 1px #494949; 
-	border-bottom:solid 1px #494949;
-	padding-top:20px;
-	padding-bottom:20px;
+	padding-top:50px;
+	padding-bottom:30px;
+	text-align: center;
+	margin-bottom: 2%;
+	border-bottom: solid 0.5px #d8d8d8;
 }
 
 .material-symbols-outlined {
@@ -100,18 +98,34 @@ outline: none;
 	background-color:#f4f4f4;
 }
 .heart{
-display: inline-block;
-    border: solid 1px;
-    padding: 7px;
-    border-radius: 100%;
-    width: 35px;
-    height: 35px;
-    text-align: center;
+	display: inline-block;
     color: #c6c6c6;
 }
 .heart:hover{
-	background-color:#d9d9d9;
 	color:#848484;
+}
+.back{
+	/* //text-align: end; */
+    color: #b3b3b3;;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 13;
+}
+.back:hover{
+	color:#7a7a7a;
+}
+.infor{
+	font-size: 18;
+    color: #616161;
+    font-weight: 350;
+}
+.me{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: justify;
+    text-align-last: justify;
 }
 </style>
 <script>
@@ -130,6 +144,7 @@ function like(num){ // num = like (좋아요 누름)  num = unlike (좋아요 �
 		cache: false,
 		data:{"type" : 1 , "status" : num  , "like_id" : like , "like_no" : like_no , "planner_no" : ${planner.planner_no}} , // 플래너 = 1 , 숙소 = 2
 		success:function(){
+			history.go(0);
 			if(num == 'like'){
 				$('.unlike').css('display', '');
 				$('.like').css('display', 'none');
@@ -138,7 +153,8 @@ function like(num){ // num = like (좋아요 누름)  num = unlike (좋아요 �
 				$('.like').css('display', '');
 				$('.unlike').css('display', 'none');
 				$('#status').attr('value' , 'unlike');
-			}ㄹ
+			}
+			
 		},
 		error : function(){
 			alert("실패");
@@ -398,16 +414,36 @@ function area(num){
            title : positions[0].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
            image : markerImage // 마커 이미지 
        });
+      
+} 
+
+function clip(){
+
+    var url = '';    // <a>태그에서 호출한 함수인 clip 생성
+    var textarea = document.createElement("textarea");  
+    //url 변수 생성 후, textarea라는 변수에 textarea의 요소를 생성
+    
+    document.body.appendChild(textarea); //</body> 바로 위에 textarea를 추가(임시 공간이라 위치는 상관 없음)
+    url = window.document.location.href;  //url에는 현재 주소값을 넣어줌
+    textarea.value = url;  // textarea 값에 url를 넣어줌
+    textarea.select();  //textarea를 설정
+    document.execCommand("copy");   // 복사
+    document.body.removeChild(textarea); //extarea 요소를 없애줌
+    
+    alert("URL이 복사되었습니다.")  // 알림창
 }
 </script>
 <body>
 <div class="container" style="border-left: solid 1px #d1d1d1; border-right: solid 1px #dbdbdb; padding-bottom:5%">
-<br>
-<span style="color:#6a6a6a">${planner.user_id} 님의 여행 플래너</span>
-<div  class="main"><h3 style="color:#ff8e15">${planner.planner_title}</h3>
-<div class="heart"><i class="bi bi-heart-fill unlike" onclick="like('unlike')" class="unlike"></i>
-<i class="bi bi-heart like" onclick="like('like')" class="like"></i></div>
-<a>여행 기간 : ${planner.planner_start} ~ ${planner.planner_end} &nbsp </a> <a>&nbsp&nbsp 지역 : ${planner.planner_area}</a>
+<div class="me">
+<span class="back" onclick="clip()">URL복사</span>
+<span class="back" onclick="location.href='plannerlist.do?page=Y'">메뉴로돌아가기</span>
+</div>
+<div  class="main">
+<h2 style="color:#ff8e15">${planner.planner_title}</h2>
+<span class="infor">여행 기간 : ${planner.planner_start} ~ ${planner.planner_end} &nbsp </span> 
+<span class="infor">&nbsp 지역 : ${planner.planner_area}</span>
+<br><span style="color:#616161; font-weight: 300;">${planner.user_id} 님의 여행 플래너</span>
 </div>
 <div class="row">
  <div class="col-sm-6">
@@ -451,8 +487,10 @@ location_on
 </div>
 <br>
 <br>
-<i class="bi bi-heart like" class="like"></i>
-<span> 추천수 ${planner.planner_like}&nbsp </span> 
+<span> 
+<i class="bi bi-heart-fill unlike" onclick="like('unlike')" class="unlike"></i>
+<i class="bi bi-heart like" onclick="like('like')" class="like"></i>
+ 추천수 ${planner.planner_like}&nbsp </span> 
 <input type="hidden" name="status" id="status">
 <i class="bi bi-chat-right-text"></i>
 <span> 댓글 ${commentNum}</span> 
