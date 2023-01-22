@@ -75,3 +75,15 @@
 
 <img src="img/8.png">
 
+전체공유 한 이용자의 플래너 리스트
+
+<img src="img/11.png">
+
+플래너 상세 보기 페이지 
+
+<img src="img/9.png">
+
+좋아요 댓글 대댓글 기능 
+
+<img src="img/10.png">
+
