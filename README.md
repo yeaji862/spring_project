@@ -8,11 +8,15 @@
 
 담당 역할 : 사용자의 여행 일정 관리 서비스 / 메인 페이지 디자인
 
-주소 : www.triponplan.kro.kr:8080/biz
+사용자용 주소 : www.triponplan.kro.kr:8080/biz
+
+관리자용 주소 : http://www.triponplan.kro.kr:8080/admin
 
 사용자 아이디 : user222 비밀번호 : 1111 (회원가입,카카오 소셜 로그인 가능)
 
 호스트 아이디 : host01 비밀번호 : 1111
+
+관리자 아이디 : manage 비밀번호 : 1111
 
 ---
 
@@ -88,4 +92,8 @@
 좋아요 댓글 대댓글 기능 
 
 <img src="img/10.png">
+
+관리자용 메인 페이지 
+
+<img src="img/12.png">
 
