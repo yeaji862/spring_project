@@ -225,8 +225,9 @@ input#key:focus {
 	<a>${planner.planner_start} ~ ${planner.planner_end}</a>
 		<c:forEach begin="1" end="${planner.planner_day}" step="1" varStatus="status">
 				<div style="height:70px;"><h5 id='p${status.count}' class="cn"><span class="memo${status.count}">DAY-${status.count}</span> 
-				<i class="bi bi-journal-text zoom bo${status.count}>" onclick="memo('${status.count}')" style=" cursor: pointer; font-size' : '22px">
-				<i class="bi bi-plus bo${status.count} bo2${status.count}" style="font-size' : '22px"></i></i>
+				 <i class="bi bi-journal-text zoom bo${status.count}" onclick="memo('${status.count}')" style=" cursor: pointer; font-size' : '22px">
+				<i class="bi bi-plus bo${status.count} bo2${status.count}" style="font-size' : '22px"></i>
+				<i class="bi bi-check-lg bo3${status.count} bo${status.count}" style="display:none"></i></i>
 					<c:set var="count" value="${status.count}" />
   					
   					<c:forEach items="${place}" var="place" varStatus="status">
@@ -293,20 +294,22 @@ function captureReturnKey(e) {
 
 
 function submits(num){
+	//애니메이션 추가 글 등록시
 	 $(".bo"+num).animate({
-			'font-size' : '30px' 
-		});  
-		  $(".bo"+num).animate({
-				'font-size' : '22px' 
-			}); 
-		$(".bo2"+num).css("background-color" , "bisque")
-		$("#val"+num).val($("#content").val());
+		'font-size' : '30px' 
+	});  
+	  $(".bo"+num).animate({
+			'font-size' : '22px' 
+		}); 
+	$(".bo2"+num).css("display" , "none");
+	$(".bo3"+num).css("display" , "");
+	$("#val"+num).val($("#content").val());
 }
 
 function memo(num){
   var memo = $(".memo" + num).html();
   $("#memo").html(memo);
-  $("#memo").append("&nbsp<i class='bi bi-journal-text zoom' onclick='submits("+num+")' style=' cursor: pointer; font-size' : '22px'><i class='bi bi-plus' style='font-size : 22px'></i></i>");
+  $("#memo").append("&nbsp<button type='button' class='btn btn-light btn-sm' onclick='submits("+num+")'>등록</button>");
   $("#content").val($("#val"+num).val());
 }
 function area(){
@@ -433,7 +436,7 @@ function test00(tval) {
  	    ,
  		error : function() {
  			inRun = false;
- 			alert("실패");
+ 			alert("다시시도해주세요");
  		}
  }); 
 	

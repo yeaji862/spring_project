@@ -214,7 +214,8 @@ input#key:focus {
 	<% for(int i=1; i<=Integer.parseInt((String)session.getAttribute("date")) + 1; i ++){ %>
 				<div style="height:70px;"><h5 id='p<%= i %>' class="cn"><span class="memo<%= i %>">DAY-<%= i %></span>
 			 <i class="bi bi-journal-text zoom bo<%= i %>" onclick="memo('<%= i %>')" style=" cursor: pointer; font-size' : '22px">
-				<i class="bi bi-plus bo<%= i %> bo2<%= i %>" style="font-size' : '22px"></i></i>
+				<i class="bi bi-plus bo<%= i %> bo2<%= i %>" style="font-size' : '22px"></i>
+				<i class="bi bi-check-lg bo3<%= i %> bo<%= i %>" style="display:none"></i></i>
 				 </h5>
 					<input type="hidden" value=" " name="content" id="val<%= i %>">
 					</div>	
@@ -258,14 +259,14 @@ function submits(num){
 	  $(".bo"+num).animate({
 			'font-size' : '22px' 
 		}); 
-	$(".bo2"+num).css("background-color" , "bisque")
+	$(".bo2"+num).css("display" , "none");
+	$(".bo3"+num).css("display" , "");
 	$("#val"+num).val($("#content").val());
 }
-
 function memo(num){
   var memo = $(".memo" + num).html();
   $("#memo").html(memo);
-  $("#memo").append("&nbsp<i class='bi bi-journal-text zoom' onclick='submits("+num+")' style=' cursor: pointer; font-size' : '22px'><i class='bi bi-plus' style='font-size : 22px'></i></i>");
+  $("#memo").append("&nbsp<button type='button' class='btn btn-light btn-sm' onclick='submits("+num+")'>등록</button>");
   $("#content").val($("#val"+num).val());
 }
 function area(){
@@ -392,7 +393,7 @@ function test00(tval) {
  	    ,
  		error : function() {
  			inRun = false;
- 			alert("실패");
+ 			alert("다시시도해주세요");
  		}
  }); 
 	
