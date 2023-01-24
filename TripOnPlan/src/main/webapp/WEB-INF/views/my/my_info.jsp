@@ -71,7 +71,7 @@ border-radius: 15px;
 		var email_pattern = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 
 		// 	 우편번호 찾기  
-		function sample6_execDaumPostcode() {
+/* 		function sample6_execDaumPostcode() {
 			new daum.Postcode(
 					{
 						oncomplete : function(data) {
@@ -110,7 +110,7 @@ border-radius: 15px;
 									.focus();
 						}
 					}).open();
-		}
+		} */
 
 		//형식 설정
 		$(function() {

@@ -8,67 +8,38 @@ if (session.getAttribute("userId") == null) {
 }
 %>
 <style>
-.wihe{
-	width: 90%;
-    height: 40px;
-    background-color: white;
-}
 
-#comment{
-	width: 90%;
-    height: 550px;
-    resize: none;
-    background-color: white;
+.main{
+	margin: 5% 15% 0 15%;
 }
-
+.title{
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+.content{
+    margin-top: 50px;
+    white-space:pre;
+}
+.back{
+	margin-bottom: 40px;
+    cursor: pointer;
+    color: #616161;
+    font-weight: 350;
+    display: inline-block;
+}
 
 </style>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-<div style="margin-left:30%; margin-right:30%;">
-	<div class="jumbotron" style="background-color: transparent; padding:30px 0 0 0 " >
-		<h1>상세 보기</h1>
+<div class="main">
+ 		<h2 class="title">${faq.faq_title}</h2>
+ 		<p style="font-size:18;">${faq.faq_regdate} 작성자 : ${faq.faq_writer}</p>
+ 		<hr>
+ 		<div class="content"><p style="width:100%">${faq.faq_content}<p></div>
+ 		<br>
+ 		<hr>
+ 		<span onclick="location.href='getFaqList.do';" class="back"><a style="color:#cdcdcd">&lt;&lt; </a> 목록으로돌아가기</span>
 	</div>
-	<div class="container-fluid">
-
-		<form name="fm" action="updateFaq.do" method="post">
-			<input type="hidden" name="faq_no" value="${faq.faq_no}">
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text" style="width:70px">제목</span>
-				</div>
-				<input type="text" name="faq_title" class="wihe"
-					value="${faq.faq_title}" <%=sts %>>
-			</div>
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text" style="width:70px">작성자</span>
-				</div>
-				<%--       <input type="text" class="form-control innm" name="writer" value="${faq.writer}" readonly <%=sts %>>       --%>
-				<input type="text" name="faq_writer" class="wihe"
-					value="${faq.faq_writer}" readonly <%=sts %>>
-			</div>
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text" style="width:70px">내용</span>
-				</div>
-				<textarea  id="comment" name="faq_content" <%=sts%>>${faq.faq_content}</textarea>
-			</div>
-
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text" style="width:70px">등록일</span>
-				</div>
-				<input type="text" name="faq_regdate" class="wihe"
-					value="${faq.faq_regdate}" readonly <%=sts %>>
-			</div>
-		
-		</form>
-			<div id="footer" style="text-align: center;">
-				<button type="button" class="btn btn-secondary" onclick="location.href='getFaqList.do';" style="background-color: #19558c;"> 목록으로 </button>
-			</div>
-	</div>
-
-	</div>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>

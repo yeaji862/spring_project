@@ -160,13 +160,13 @@
 <div style="text-align:center";>
 <div class="chart1" style="width: 65%; height: 500px; padding-left:30px ; float:left; position: relative;">
 	<!--차트 1, 막대형 그래프-->
-	최근 10일간 <span class="red-text-small">${host_id}</span>님의 <span class="chart_title"><span class="red-text-small">일별</span> 매출 현황<br></span>
+	최근 <span class="red-text-small">${host_id}</span>님의 <span class="chart_title"><span class="red-text-small">일별</span> 매출 현황<br></span>
 	<br>
 	<canvas id="myChart"></canvas>
 </div>
 <div style="width: 30%; height: 400px; padding-right:30px ; float:right; position: relative;">
 	<!--차트 2, 원형 그래프-->
-	최근 10일간 <span class="red-text-small">${host_id}</span>님의 <span class="chart_title"><span class="red-text-small">숙소별</span> 매출 현황<br></span>
+	최근 <span class="red-text-small">${host_id}</span>님의 <span class="chart_title"><span class="red-text-small">숙소별</span> 매출 현황<br></span>
 	<br>
 	<canvas id="myChart2"></canvas>
 </div>
@@ -182,6 +182,7 @@
             var myChart = new Chart(context, {
                 type: 'bar', // 차트의 형태
                 data: { // 차트에 들어갈 데이터
+                	
                     labels: [
                         //x 축
                         '${hostIndexChartSelect[0].chart_date}',
@@ -303,7 +304,7 @@
 //                                 ${hostIndexChart2Select[6].chart_sum2},
 //                                 ${hostIndexChart2Select[7].chart_sum2},
 //                                 ${hostIndexChart2Select[8].chart_sum2},
-//                                 ${hostIndexChart2Select[9].chart_sum2}
+//                                 ${hostIndexChart2Select[9].chart_sum2} 
                             ,
                             backgroundColor: [
                                 //색상

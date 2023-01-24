@@ -13,15 +13,14 @@
 
 <script>
 	function detailList(num) {
-		location.href = "qna_update.do?qna_num=" + num;
+		location.href = "qna_views.do?qna_num=" + num;
 	}
 </script>
 </head>
-<body>
-<br>
+<%-- <body class="d-flex flex-column min-vh-100">
 
-	<div class="container">
-		<h2>1:1 문의 목록</h2>
+	<div class="container footer-div">
+		<h2 style="margin-top: 80px;">1:1 문의 목록</h2>
 		<br><br>
 		<table class="table table-hover">
 			<thead>
@@ -51,6 +50,38 @@
 
 		</table>
 	</div>
-
+<%@ include file="footer.jsp"%>
+</body> --%>
+<body class="d-flex flex-column min-vh-100">
+<div class="footer-div">
+<br><br>
+	<div class="container">
+	<div class="myplanner-div1">1:1 문의 목록</div>
+<hr class="myplanner-hr">
+		<table class="table table-hover myplanner-table">
+			<thead class="btn-primary">
+				<tr>
+					<th class="myplanner-th">번호</th>
+					<th class="myplanner-th">제목</th>
+					<th class="myplanner-th">날짜</th>
+					<th class="myplanner-th">답변여부</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:forEach items="${qnalist}" var="qna1">
+					<tr style="cursor: pointer;" align="center" onclick="detailList(${qna1.qna_num })">
+						<td>${qna1.qna_num }</td>
+						<td>${qna1.qna_title }</td>
+						<td>${qna1.qna_regdate }</td>
+						<td>${qna1.qna_views }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<br>
+		<br>
+	</div>
+	</div>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

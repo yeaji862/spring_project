@@ -44,12 +44,13 @@
   
   <!-- host index 막대형 차트 (최근 10일 일별 매출) -->
   <select id="hostIndexChartSelect" resultType="hostChart">
-  SELECT DATE_FORMAT(PAY_DATE, '%y-%m-%d') AS chart_date, sum(PAY_AMOUNT) AS chart_sum, COUNT(*) AS chart_count FROM reservation WHERE host_id=#{host_id} AND PAY_DATE BETWEEN DATE_SUB(NOW(), INTERVAL 10 DAY) AND NOW() GROUP BY DATE_FORMAT(PAY_DATE, '%y-%m-%d');
+  <!-- SELECT DATE_FORMAT(PAY_DATE, '%y-%m-%d') AS chart_date, sum(PAY_AMOUNT) AS chart_sum, COUNT(*) AS chart_count FROM reservation WHERE host_id=#{host_id} AND PAY_DATE BETWEEN DATE_SUB(NOW(), INTERVAL 10 DAY) AND NOW() GROUP BY DATE_FORMAT(PAY_DATE, '%y-%m-%d'); -->
+  SELECT DATE_FORMAT(PAY_DATE, '%y-%m-%d') AS chart_date, sum(PAY_AMOUNT) AS chart_sum, COUNT(*) AS chart_count FROM reservation WHERE host_id=#{host_id} AND NOW() GROUP BY DATE_FORMAT(PAY_DATE, '%y-%m-%d') order by chart_date desc;
   </select>
   
   <!-- host index 파이형 차트 (최근 10일 숙소별 매출) -->
   <select id="hostIndexChart2Select" resultType="hostChart">
-  SELECT ROOM_NAME, sum(PAY_AMOUNT) AS chart_sum2 FROM reservation WHERE host_id=#{host_id} AND pay_date BETWEEN DATE_SUB(NOW(), INTERVAL 10 DAY) AND NOW() GROUP BY room_name;
+  SELECT ROOM_NAME, sum(PAY_AMOUNT) AS chart_sum2 FROM reservation WHERE host_id=#{host_id} GROUP BY room_name;
   </select>
   
   <!-- host index 운영중인 숙소 -->

@@ -61,9 +61,9 @@ public class PayController {
 	public static final String IMPORT_CANCEL_URL = "https://api.iamport.kr/payments/cancel";
 	public static final String IMPORT_PREPARE_URL = "https://api.iamport.kr/payments/prepare";
 	//"아임포트 Rest Api key로 설정";
-	public static final String KEY = "4758005055508668";
+	public static final String KEY = "2810027356877683";
 	//"아임포트 Rest Api Secret로 설정"; 
-	public static final String SECRET = "fFzVkIERPgeaeg6yZU3Z1x7mvd5TH0DLiJrdmkOjoQSQBUinDRkY6DlzidAosE3YyVylW5evPNmJFzmH";
+	public static final String SECRET = "LZeNTLUvzzNx5twODJdDeNxBdkUpIU8DxGlKwtuDRI6SlD0DFTfV1pd5jQz4W3ut8yQfa5OFcJgYk5Wn";
 
 	// 아임포트 인증(토큰)을 받아주는 함수 
 	public String getImportToken() {

@@ -65,18 +65,30 @@ public class UserController {
 					return "redirect:index.jsp";
 				} else {
 					System.out.println("로그인실패");
-					return "WEB-INF/views/user_login.jsp";
+					return "WEB-INF/views/user_login.jsp?fail=1";
 				}
 			} else if (vo == null) {
 				System.out.println("로그인실패");
-				return "WEB-INF/views/user_login.jsp";
+				return "WEB-INF/views/user_login.jsp?fail=2";
 			} else if (vo.getUser_status().equals("1")) {
 				System.out.println("탈퇴회원");
-				return "WEB-INF/views/user_login.jsp";
+				return "WEB-INF/views/user_login.jsp?fail=1";
 			} else {
 				System.out.println("로그인실패");
-				return "WEB-INF/views/user_login.jsp";
+				return "WEB-INF/views/user_login.jsp?fail=1";
 			}
+		}
+		
+		public static void alert(HttpServletResponse response, String msg) {
+		    try {
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter w = response.getWriter();
+				w.write("<script>alert('"+msg+"');</script>");
+				w.flush();
+				w.close();
+		    } catch(Exception e) {
+				e.printStackTrace();
+		    }
 		}
 		
 		// 카카오로그인

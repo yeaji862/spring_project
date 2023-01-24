@@ -33,7 +33,7 @@ font-weight: 550;
 <body>
 	<br>
 
-	<div class="container">
+	<div class="container" style="margin-bottom: 40px;">
 		<h1>1:1 문의 등록</h1>
 		<br>
 		<br>
@@ -62,6 +62,6 @@ font-weight: 550;
 	</div>
 	</div>
 	
-
+<%@ include file="footer.jsp"%>
 </body>
 </html>

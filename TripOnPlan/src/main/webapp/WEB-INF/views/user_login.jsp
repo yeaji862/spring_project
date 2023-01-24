@@ -60,10 +60,17 @@
 			Kakao.Auth.setAccessToken(undefined);
 		}
 	}
-<%if (request.getParameter("fail") != null) {%>
-	alert("로그인실패");
-<%}%>
-	
+
+<%
+if(request.getParameter("fail") != null){
+	if(request.getParameter("fail").equals("1")){%>
+	alert("비밀번호가 일치하지 않습니다")
+	<%}
+	if(request.getParameter("fail").equals("2")){%>
+		alert("존재하지 않는 아이디 입니다")
+	<%}
+}
+%>
 </script>
 <style>
 /* 로그인버튼 */

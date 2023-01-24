@@ -25,7 +25,8 @@ var idReg = /^([a-z | A-Z]{1})([A-Za-z0-9\_]{5,11})$/;   // 아이디
 //영어 대소문자 1글자 뒤에는 영어대소문자숫자_까지5~11글자
 var pwReg =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
 //영어 대소문자 특수문자 숫자 포함 8에서 16글자
-var emailRegex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;//이메일
+var emailRegex = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;//이메일
+var phone_pattern = /^010-?([0-9]{4})-?([0-9]{4})$/;
 var passwordCheck = false;//비밀번호재확인
 var idCheck = false;//아이디 중복체크
 var con=false;//인증
@@ -43,6 +44,11 @@ $(function() {
                       idReg1=true;
 
                    }
+                   if(idReg1){ // 본인 인증후 아이디 값 변경 할 때
+                	   $("#user_id").on("propertychange change keyup paste input", function() {
+                		   idCheck=false;
+                		});
+                   }
                 });
  });
  
@@ -57,8 +63,23 @@ $(function() {
                       pwReg1=true;
 
                    }
+                 
                 });
  });
+ 
+$(function() {
+	 $('#user_email').focusout(function(){
+		 if ($('#user_email').val() != "") {
+				if (emailRegex.test($('#user_email').val()) == false) {
+					 $("#checkemail").css('display' , '');
+				} else {
+					 $("#checkemail").css('display' , 'none');
+					 emailRegex1 = true;
+				}
+			}
+	 });
+});
+
  
    //휴대폰
    $(function() {
@@ -66,6 +87,14 @@ $(function() {
       var code2 = "";
       $("#phoneChk").click(
             function() {
+            	if($("#phone").val() == ""){
+            		alert("전화번호를 입력해주세요");
+            		return false;
+            	}
+            	if(phone_pattern.test($("#phone").val()) == false){
+            		alert("전화번호를 올바르게 입력해주세요");
+            		return false;
+            	}
                alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.");
                var phone = $("#phone").val();
 
@@ -92,7 +121,7 @@ $(function() {
                });
             });
 
-      $("#phoneChk2").click(function() {
+      $(".phoneChk2").click(function() {
          if ($("#phone2").val() == code2) {
             $(".successPhoneChk").text("인증번호가 일치합니다.");
             $(".successPhoneChk").css("color", "green");
@@ -110,25 +139,14 @@ $(function() {
       });
 
    });
-   
-   
-   
-   // 비밀번호 재확인
-   $(function() {
-      $('#user_passwordCheck').focusout(function() {
-         console.log($('#user_passwordCheck').val());
-         if ($('#user_passwordCheck').val() != $('#user_password').val()) {
-            alert("비밀번호재확인필요");
-
-         } else {
-            passwordCheck = true;
-         }
-      })
-   })
+ 
    //    아이디 중복체크
    $(function() {
       $('#idCheck').click(function() {
     	 
+    	  if(!(idReg1)){
+    		 return false;
+    	  }
     	
     	 
          if($('#user_id').val()!=''){
@@ -164,19 +182,24 @@ $(function() {
 
    //회원가입버튼
    function check() {
-      if(idReg1==false){
-         $('#user_id').focus();
-      }else if(pwReg1==false){
-         $('#user_password').focus();
-      }else if(con==false){
+      if(!(idReg1)){
+          $('#user_id').focus();
+       }else if(!(idCheck)){
+          alert("아이디중복체크를 완료해주세요");
+       } else if(!(pwReg1)){
+           $('#user_password').focus();
+       }else if($('#user_passwordCheck').val() != $('#user_password').val()){
+    	   $('#user_passwordCheck').focus();
+    	   alert("비밀번호가 일치하지 않습니다");
+       }else if(!(con)){
          alert("본인인증을 완료해주세요");
-      }else if(idCheck==false){
-         alert("아이디중복체크를 완료해주세요");
-      }
-      else{
+       }else if(!(emailRegex1)){
+    	   $('#user_email').focus(); 
+       }
+       if(idReg1 && pwReg1 && con && idCheck && emailRegex1){
          $('#user_insert').submit();
        }
-
+     
     }
    
 </script>
@@ -246,11 +269,13 @@ input {
 </td>
 </tr>
 <tr>
-<th></th><td><input   id="phone2" type="text" name="phone2" title="인증번호 입력" disabled /> <button type="button" id="phoneChk2" class="doubleChk userinsert-input">인증확인</button><br><span class="point successPhoneChk" style="font-size: 12px; color:green;">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span> <input
+<th></th><td><input   id="phone2" type="text" name="phone2" title="인증번호 입력" disabled /> <button type="button" id="phoneChk" class="doubleChk userinsert-input phoneChk2">인증확인</button><br><span class="point successPhoneChk" style="font-size: 12px; color:green;">휴대폰 번호 입력후 인증번호 보내기를 해주십시오.</span> <input
       type="hidden" id="phoneDoubleChk" /> </td>
 </tr>   
 <tr>
-<th class="userinsert-th">이메일</th><td><input class="userinsert-input" type="text" name="user_email" id="user_email" placeholder='예) 1018@triponplan.com'></td>
+<th class="userinsert-th">이메일</th><td><input class="userinsert-input" type="text" name="user_email" id="user_email" placeholder='예) 1018@triponplan.com'>
+<small style="color:red; display: none;" id="checkemail"><br>이메일을 올바르게 입력해주세요</small>
+</td>
 </tr>
    <tr>
    <th></th><td>

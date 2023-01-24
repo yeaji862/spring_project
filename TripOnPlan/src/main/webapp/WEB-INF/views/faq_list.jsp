@@ -123,9 +123,7 @@ function selTr(val){
 
 <body>
 <div style="margin-left:10%; margin-right:10%">
-	<div class="jumbotron faql-div1">
-		<h1>공지 사항</h1>
-	</div>
+		<h1 style="margin-top: 50px;font-weight: 600;">공지 사항</h1>
 	<div class="container-fluid faql-div2">
 		<nav id="searchNav"
 			class="navbar navbar-expand-sm navbar-dark faql-nav">
@@ -191,5 +189,6 @@ function selTr(val){
 		</div>
 	</div>
 	</div>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>
