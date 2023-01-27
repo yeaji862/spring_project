@@ -105,6 +105,12 @@
 
 <img src="img/room02.png">
 
+숙소 결제 페이지 
+
+☑️ 이름 , 전화번호 , 이메일 수정 가능
+
+<img src="img/room03.png">
+
 호스트 전용 로그인 페이지
 
 <img src="img/host01.png">
