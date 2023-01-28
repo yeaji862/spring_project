@@ -85,10 +85,11 @@ background-color: #cccccc;
 	 	 i += 1;
 		
 		 });
-		 
+		
 	 } , 
 	 error : function(){
-		 alert("실패");
+		 alert("다시시도해주세요");
+		 history.back();
 	 }
  });
 
@@ -108,7 +109,7 @@ background-color: #cccccc;
 		 
 		 } , 
 		 error : function(){
-			 alert("실패");
+			 alert("다시시도해주세요");
 		 }
 	 });
 	

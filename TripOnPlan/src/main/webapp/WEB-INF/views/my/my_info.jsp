@@ -443,7 +443,7 @@ border-radius: 15px;
 	</tr>
 	</table>
 	
-	<div class="join"><a class="join" href="step1.do?type=logout">  >> TripOnPlan에서 회원가입 하러가기</a></div>
+	<div class="join"><a class="join" href="user_insert.do">  >> TripOnPlan에서 회원가입 하러가기</a></div>
 <%} }else {%>
 <div class="container">
 <form class="validation-form" action="user_update.do" method="post"

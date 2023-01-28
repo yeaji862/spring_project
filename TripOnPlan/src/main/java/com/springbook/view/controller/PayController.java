@@ -173,7 +173,7 @@ public class PayController {
 			System.out.println("예약 결제 폼 호출 끝");
 			
 			// 값은 아임포트의 가맹점 식별코드 입력
-			model.addAttribute("impKey", "imp57061355");
+			model.addAttribute("impKey", "imp45022433");
 			
 			return "WEB-INF/views/user_room/user_insert_reservation.jsp";
 		

@@ -160,7 +160,7 @@ function like(num){ // num = like (좋아요 누름)  num = unlike (좋아요 �
 			
 		},
 		error : function(){
-			alert("실패");
+			alert("다시시도해주세요");
 		}
 	});	
 }
@@ -225,10 +225,10 @@ function like(num){ // num = like (좋아요 누름)  num = unlike (좋아요 �
 		 	 i += 1;
 			
 			 });
-			 
 		 } , 
 		 error : function(){
-			 alert("실패");
+			 alert("다시시도해주세요");
+			 location.href='plannerlist.do?page=Y';
 		 }
 	 });
 
@@ -248,7 +248,7 @@ function like(num){ // num = like (좋아요 누름)  num = unlike (좋아요 �
 			 
 			 } , 
 			 error : function(){
-				 alert("실패");
+				 alert("다시시도해주세요");
 			 }
 		 });
 	  

@@ -254,8 +254,9 @@ public class UserController {
 	
 	// 아이디찾기
 		@RequestMapping("/user_find.do")
-		public String user_find() {
+		public String user_find(Model model) {
 			System.out.println("아이디찾기로이동");
+			model.addAttribute("ca", "id");
 			return "WEB-INF/views/user_find.jsp";
 		}
 
@@ -264,39 +265,45 @@ public class UserController {
 	public String user_find(UserVO vo, Model model) {
 		vo.setUser_type("own");
 		System.out.println("아이디찾기" + vo);
-		List<UserVO> user =  userService.find(vo);
+		List<UserVO> user = userService.find(vo);
 		System.out.println("찾은결과: " + user);
-		if (user != null) {
+		if (!user.isEmpty()) {
 //			for(UserVO vo1 : user) {
 			model.addAttribute("user", user);
+			model.addAttribute("ca", 1);
 //			}
-			return "WEB-INF/views/user_find.jsp";
+			return "WEB-INF/views/user_find_list.jsp?ca=1";
 		} else {
-			return "WEB-INF/views/user_find.jsp";
+			model.addAttribute("none", 100);
+			return "WEB-INF/views/user_find_list.jsp";
 		}
+		
 
 	}
 	// 비밀번호찾기
 		@RequestMapping("/user_pwfind.do")
-		public String user_pwfind() {
+		public String user_pwfind(Model model) {
 			System.out.println("비밀번호찾기로이동");
-			return "WEB-INF/views/user_pwfind.jsp";
+			model.addAttribute("ca", "pw");
+			return "WEB-INF/views/user_find.jsp";
 		}
 
 	// 비밀번호찾기폼
 	@RequestMapping("/user_pwfindform.do")
 	public String user_pwfind(UserVO vo, Model model) {
+		System.out.print("!!!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~");
 		vo.setUser_type("own");
 		System.out.println("비밀번호찾기" + vo);
-		List<UserVO> user = (List<UserVO>) userService.find(vo);
+		List<UserVO> user = userService.find(vo);
 		System.out.println("찾은결과: " + vo);
-		if (user != null) {
+		if (!user.isEmpty()) {
 			model.addAttribute("user", user);
-			return "WEB-INF/views/user_pwfind.jsp";
+			model.addAttribute("ca", 0);
+			return "WEB-INF/views/user_find_list.jsp";
 		} else {
-			return "WEB-INF/views/user_pwfind.jsp";
+			model.addAttribute("none", 100);
+			return "WEB-INF/views/user_find_list.jsp";
 		}
-
 	}
 	// 비밀번호 변경하기
 		@RequestMapping("/user_change.do")

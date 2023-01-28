@@ -250,7 +250,7 @@ $(document).ready(function(){
 	});
 			
 		}else {
-			alert("종료일을 선택해주세요");
+			alert("최소 2일 이상부터 일정 등록이 가능합니다");
 			const offset = $(".1").offset();
 			$('html, body').animate({scrollTop: offset.top}, 500);
 		}
@@ -292,7 +292,7 @@ $(document).ready(function(){
 			$('html, body').animate({scrollTop: offset.top}, 500);
 			return false;
 		}else if(($(".start").val() == $(".end").val())){
-			alert("종료일을 선택해주세요");
+			alert("최소 2일 이상부터 일정 등록이 가능합니다");
 			$('#numP').val('0');
 			$(".end").val('');
 			const offset = $(".1").offset();

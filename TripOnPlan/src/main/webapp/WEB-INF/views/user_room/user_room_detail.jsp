@@ -27,14 +27,16 @@ function checkinVal(e) {
 	
 	var checkIn = e.target.value;
 	
-	document.getElementById("checkinDate").append(checkIn);
+	//document.getElementById("checkinDate").append(checkIn);
+	$(".in").text(checkIn);
 }
 
 function checkoutVal(e) {
 	
 	var checkOut = e.target.value;
 	
-	document.getElementById("checkoutDate").append(checkOut);
+	//document.getElementById("checkoutDate").append(checkOut);
+	$(".out").text(checkOut);
 }
 
 function f_moveBackToImgNo1() {
@@ -1125,8 +1127,8 @@ svg {
 	</div>
 	
 	<div id="u_room_results">
-	<div id="checkinDate">체크인 날짜: &nbsp;&nbsp;</div>
-	<div id="checkoutDate">체크아웃 날짜: &nbsp;&nbsp;</div>
+	<div id="checkinDate">체크인 날짜: &nbsp;&nbsp;<span class="in"></span></div>
+	<div id="checkoutDate">체크아웃 날짜: &nbsp;&nbsp;<span class="out"></span></div>
 	<div id="totalNum">총 예약 인원: &nbsp;&nbsp;</div>
 	<div id="finalAmount">총 결제 금액: &nbsp;&nbsp;</div>
 	</div>
